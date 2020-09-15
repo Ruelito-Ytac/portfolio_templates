@@ -1,28 +1,46 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="description" content="This is the landing page of index and description.">
 	<title>Portfolio</title>
 	<link rel="stylesheet" href="static/css/bootstrap.css">
 	<link rel="stylesheet" href="static/css/common.css">
-	<link rel="stylesheet" href="static/css/common_default.css">
 	<script src="static/js/jquery-1.11.0.min.js"></script>
 	<script src="static/js/bootstrap.js"></script>
-	<script src="static/js/portfolio.js"></script>
+    <script src="static/js/portfolio.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#wrapper').on('click','.project_link', function(){
+                var preview_pane = $(this).parents('.project_list').siblings('.preview_pane_container').find(' .preview_pane');
+                var iframe_src = $(this).attr('href');
+                $('.project_link.active').removeClass('active');
+                $(this).addClass('active');
+                preview_pane.html('<iframe src="'+ iframe_src +'" frameborder="0" width="100%" height="420px"></iframe>');
+    
+                return false;
+            });
+    
+            $('.project_list').each(function(){
+                $(this).find('.project_link:first-child').trigger('click').addClass('active');
+            });
+    
+        })
+    </script>
 </head>
 <body>
 
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/portfolio">Portfolio</a>
+				<a class="navbar-brand" href="/portfolio/portfolio_1.html">Portfolio</a>
 			</div>
 
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="/portfolio/index_default.html">Default Template</a></li>
-				<li><a href="/portfolio/index_iteration_1.html">Version 1</a></li>
-				<li><a href="/portfolio/index_iteration_2.html">Version 2</a></li>
-				<li><a href="/portfolio/index_iteration_3.html">Version 3</a></li>
+				<li class="active"><a href="/index.html">Default Template</a></li>
+				<li><a href="/portfolio/portfolio_1.html">Portfolio 1</a></li>
+				<li><a href="/portfolio/portfolio_2.html">Portfolio 2</a></li>
+				<li><a href="/portfolio/portfolio_3.html">Portfolio 3</a></li>
 				<li>
 					<a href="https://github.com/ashrock/portfolio_templates" target="_blank">
 						<span class="git-icon"></span>&nbsp;Check the codes in Github
